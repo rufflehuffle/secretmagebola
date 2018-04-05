@@ -58,7 +58,7 @@ function timer() {
         u_id("con_inc").style.display="none"; //Make incubator invisible
         u_id("btn_inc").style.display="none"; //Make incubate button invisible
         u_id("ntf").innerHTML="Your egg has hatched!"; //Notify that egg has hatched
-        u_id("ntf").style.display="block"; //Make notification box visible
+        u_id("con_ntf").style.display="block"; //Make notification box visible
         ntf_time = 10; //Set notification timer to 10
         eg_hat = 1; //Set egg timer to 1
         u_id("con_stg1").style.display="block"; //Make level and stats button visible
@@ -68,8 +68,7 @@ function timer() {
     //Notification Timer
     ntf_time = ntf_time - 1; //Subtract 1 from time left for notification
     if (ntf_time == 0) { //Check if notification time is up
-        u_id("ntf").innerHTML=""; //Clear notifications
-        u_id("ntf").style.display="none"; //Make notification box invisible
+        u_id("con_ntf").style.display="none"; //Make notification box invisible
     }
 }
 
@@ -187,7 +186,7 @@ function epl(x) {
         if (rn > 50){
             u_id("ntf").innerHTML="You have found a Pokeball";
             u_id("ntf").style.display="block"; //Make notification box visible
-            u_id("btn_clm").style.display="block";
+            u_id("btn_clm").style.display="inline-block";
         } else {
             u_id("ntf").innerHTML="You have found a greatball";
             u_id("ntf").style.display="block"; //Make notification box visible
