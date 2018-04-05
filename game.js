@@ -185,7 +185,7 @@ function epl(x) {
     if (x == "r1") {
         if (rn > 50){
             u_id("ntf").innerHTML="You have found a Pokeball";
-            u_id("ntf").style.display="block"; //Make notification box visible
+            u_id("con_ntf").style.display="block"; //Make notification box visible
             u_id("btn_clm").style.display="inline-block";
         } else {
             u_id("ntf").innerHTML="You have found a greatball";
