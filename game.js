@@ -1,21 +1,27 @@
 //Variables
 var st = 0; //Starter
-var sc_prev = "sc_1";
-var pk = 0;
-var pk_img = 0;
-var pk_inc = 0;
-var eg_hat = 0;
-var inc_time = 0;
-var ntf_time = 0;
-var pk_lvl = 0;
-var stat_shw = 0;
-var pk_nm = 0;
-var hp = 0;
-var atk = 0;
-var def = 0;
-var spa = 0;
-var spd = 0;
-var spe = 0;
+var sc_prev = "sc_1"; //Previous Screen
+var pk_img = 0; //Pokemon Image
+var pk_inc = 0; //Is pokemon being incubated? 0 = no, 1 = yes
+var eg_hat = 0; //Egg Hatch Timer
+var inc_time = 0; //Time incubated
+var ntf_time = 0; //Notification Timer
+var pk_lvl = 0; //Pokemon Level
+var pk_nm = 0; //Pokemon Name
+var stat_hp = 0; //Health Stat
+var stat_atk = 0; //Attack Stat
+var stat_def = 0; //Defense Stat
+var stat_spa = 0; //Special Attack Stat
+var stat_spd = 0; //Special Defense Stat
+var stat_spe = 0; //Speed Stat
+var rn = 0; //Random Number
+var pk_side = 0; //Pokemon Side
+var e_stat_hp = 0; // Enemy Health Stat
+var e_stat_atk = 0; // Enemy Attack Stat
+var e_stat_def = 0; // Enemy Defense Stat
+var e_stat_spa = 0; // Enemy Special Attack Stat
+var e_stat_spd = 0; // Enemy Special Defense Stat
+var e_stat_spe = 0; // Enemy Speed Stat
 
 //u_id = document.getElementById
 var u_id = function(id){
@@ -36,51 +42,54 @@ function tog_vis(id){
 window.setInterval(timer, 1000)
 
 function timer() {
+    //Incubation
     if (pk_inc == 1) {
         eg_hat = eg_hat - 1;
         inc_time = inc_time + 1;
         u_id("inc_time").innerHTML=inc_time;
         u_id("eg_hat").innerHTML=eg_hat;
     }
-    if (eg_hat < 0) {
-        pk_lvl = 1;
-        define_pk_hat();
-        inc_ftc();
-        u_id("pk_img").src=pk_img;
-        u_id("con_inc").style.display="none";
-        u_id("btn_inc").style.display="none";
-        u_id("ntf").innerHTML="Your egg has hatched!";
-        u_id("ntf").style.display="block";
-        ntf_time = 10;
-        eg_hat = 1;
-        u_id("con_stg1").style.display="block";
-        u_id("pk_lvl").innerHTML=pk_lvl;
-        u_id("con_act").style.display="block";
+    //Egg Hatching
+    if (eg_hat < 0) { //Check if egg hatched
+        pk_lvl = 1; //Set lvl = 1
+        define_pk_hat(); //Check what pokemon hatches from the egg and set stats, name, and image of pokemon
+        inc_ftc(); //Take pokemon out of incubator
+        u_id("pk_img").src=pk_img; //Update pokemon image
+        u_id("con_inc").style.display="none"; //Make incubator invisible
+        u_id("btn_inc").style.display="none"; //Make incubate button invisible
+        u_id("ntf").innerHTML="Your egg has hatched!"; //Notify that egg has hatched
+        u_id("ntf").style.display="block"; //Make notification box visible
+        ntf_time = 10; //Set notification timer to 10
+        eg_hat = 1; //Set egg timer to 1
+        u_id("con_stg1").style.display="block"; //Make level and stats button visible
+        u_id("pk_lvl").innerHTML=pk_lvl; //Update pokemon level
+        u_id("con_act").style.display="block"; //Make actions box visible
     }
-    ntf_time = ntf_time - 1;
-    if (ntf_time == 0) {
-        u_id("ntf").innerHTML="";
-        u_id("ntf").style.display="none";
+    //Notification Timer
+    ntf_time = ntf_time - 1; //Subtract 1 from time left for notification
+    if (ntf_time == 0) { //Check if notification time is up
+        u_id("ntf").innerHTML=""; //Clear notifications
+        u_id("ntf").style.display="none"; //Make notification box invisible
     }
 }
 
 function define_pk_hat(){
-    if (pk_img == "egg/bulbasaur.png"){
-        pk_img = "pk/bulbasaur.gif";
-        pk_nm = "Bulbasaur";
-        set_stat(12, 6, 6, 6, 6, 6);
+    if (pk_img == "egg/bulbasaur.png"){ //Check if egg is a bulbasaur egg
+        pk_img = "pk/bulbasaur.gif"; //Set pokemon image to bulbasaur
+        pk_nm = "Bulbasaur"; //Set pokemon name to bulbasaur
+        set_stat(12, 6, 6, 6, 6, 6, 0); //Set stats
     }
     if (pk_img == "egg/charmander.png"){
         pk_img = "pk/charmander.gif";
         pk_nm = "Charmander";
-        set_stat(12, 6, 6, 6, 6, 6);
+        set_stat(12, 6, 6, 6, 6, 6, 0);
     }
     if (pk_img == "egg/squirtle.png"){
         pk_img = "pk/squirtle.gif";
         pk_nm = "Squirtle";
-        set_stat(12, 6, 6, 6, 6, 6);
+        set_stat(12, 6, 6, 6, 6, 6, 0);
     }
-    u_id("pk_nm").innerHTML=pk_nm;
+    u_id("pk_nm").innerHTML=pk_nm; //Update pokemon name
 }
 
 //Select Starter
@@ -141,21 +150,47 @@ function inc_ftc(){
 }
 
 function sw_aud(x){
-    y = "music/" + x + ".mp3";
+    var y = "music/" + x + ".mp3";
     u_id("audio").src=y;
 }
 
-function set_stat(a,b,c,d,e,f){
-    hp = a;
-    atk = b;
-    def = c;
-    spa = d;
-    spd = e;
-    spe = f;
-    u_id("hp").innerHTML=hp;
-    u_id("atk").innerHTML=atk;
-    u_id("def").innerHTML=def;
-    u_id("spa").innerHTML=spa;
-    u_id("spd").innerHTML=spd;
-    u_id("spe").innerHTML=spe;
+function set_stat(a,b,c,d,e,f,g){
+    pk_side = g;
+    if (g == 0){
+        stat_hp = a;
+        stat_atk = b;
+        stat_def = c;
+        stat_spa = d;
+        stat_spd = e;
+        stat_spe = f;
+    }
+    if (g == 1){
+        e_stat_hp = a;
+        e_stat_atk = b;
+        e_stat_def = c;
+        e_stat_spa = d;
+        e_stat_spd = e;
+        e_stat_spe = f;
+    }
+    u_id("hp").innerHTML=stat_hp;
+    u_id("atk").innerHTML=stat_atk;
+    u_id("def").innerHTML=stat_def;
+    u_id("spa").innerHTML=stat_spa;
+    u_id("spd").innerHTML=stat_spd;
+    u_id("spe").innerHTML=stat_spe;
+}
+
+//Explore
+function epl(x) {
+    rn = Math.floor(Math.random()*99) + 1; //Set random number to a integer between 1 - 100
+    if (x == "r1") {
+        if (rn > 50){
+            u_id("ntf").innerHTML="You have found a Pokeball";
+            u_id("ntf").style.display="block"; //Make notification box visible
+            u_id("btn_clm").style.display="block";
+        } else {
+            u_id("ntf").innerHTML="You have found a greatball";
+            u_id("ntf").style.display="block"; //Make notification box visible
+        }
+    }
 }

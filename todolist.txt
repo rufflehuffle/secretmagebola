@@ -1,0 +1,12 @@
+High Priority:
+    -Create Explore System
+
+Medium Priority:
+    -Clean Up HTML Code
+    -Add Comments
+
+Low Priority:
+    -Create Battle System
+    -Fix Padding Glitch (Padding changes size after notifications are removed)
+    -Create Saving System
+    -Progress Bar for Incubation & etc.
