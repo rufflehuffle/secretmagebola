@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+    <title>Pokemon RPG v0.2</title>
+    <script type="text/javascript" src="game.js"></script>
+    <link href="game.css" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.ico">
+</head>
+<body>
+    <audio src="" autoplay loop id="audio"></audio>
+    <div id="sc_1" class="sc"> <!--Screen 1-->
+        <div class="oui">
+            Pokemon RPG<br>
+            <button onclick="sc_sw('sc_2')">Start</button>
+        </div>
+    </div>
+    <div id="sc_2" class="sc">
+        <div class="oui">
+        Welcome to the World of Pokemon!<br>
+        Your adventure will start soon.<br>
+        But first, choose an egg.<br>
+        It will hatch into a fine partner to accompany you on your journey.<br>
+        <div class="ui">
+        <img src="egg/bulbasaur.png" onclick="sel_st(1)" class="c">
+        <img src="egg/charmander.png" onclick="sel_st(2)" class="c">
+        <img src="egg/squirtle.png" onclick="sel_st(3)" class="c">
+        </div><br>
+        (Click on an egg to choose.)
+        </div>
+    </div>
+    <div id="sc_3" class="sc">
+        <div class="oui">
+            Are you sure you want to pick this egg?<br>
+            You will not be able to change this later.<br>
+            <div class="ui">
+                <img class="st_eg">
+            </div><br>
+            <button onclick="sc_sw('sc_4'); sw_aud('')">Yes</button><br>
+            <button onclick="sc_sw('sc_2')">No</button><br>
+        </div>
+    </div>
+    <div id="sc_4" class="sc">
+        <div class="oui">
+            <span id="pk_nm">???</span><br>
+            <div class="ui">
+                <img id="pk_img">
+            </div><br>
+            <button id="btn_inc" style="width:100px" onclick="inc_plc()">Incubate</button>
+            <div id="con_stg1" class="hidden">
+                Lvl: <span id="pk_lvl">0</span><br>
+                <button onclick="tog_vis('stat')" id="btn_stat">Stats</button>
+                <div id="stat" class="hidden ui" style="padding:5px;">
+                    HP: <span id="hp"></span><br>
+                    Atk: <span id="atk"></span><br>
+                    Def: <span id="def"></span><br>
+                    Sp. Atk: <span id="spa"></span><br>
+                    Sp. Def: <span id="spd"></span><br>
+                    Spd: <span id="spe"></span><br>
+                </div>
+            </div>
+        </div>
+        <div class="hidden oui" id="con_act">
+            Actions<br>
+            <div class="ui" style="padding: 5px;">
+                <button onclick="tog_vis('fgt')">Fight</button><br>
+                <div class="hidden ui" style="padding:5px;" id="fgt">
+                    <button>Rival</button>
+                </div>
+                <button onclick="tog_vis('epl')">Explore</button><br>
+                <div class="hidden ui" style="padding:5px;" id="epl">
+                    <button>Route 1</button>
+                </div>
+                <button onclick="tog_vis('trn')">Train</button>
+                <div class="hidden ui" style="padding:5px;" id="trn">
+                    <img src="bag/HP_S.png">
+                    <img src="bag/ATK_S.png">
+                    <img src="bag/DEF_S.png">
+                    <img src="bag/SPA_S.png">
+                    <img src="bag/SPD_S.png">
+                    <img src="bag/SPE_S.png">
+                </div>
+            </div>
+        </div>
+        <div id="ntf" class="hidden oui">
+        </div>
+        <div class="oui" id="con_inc">
+            Incubator<br>
+            <div id="inc" class="ui">
+                <img style="margin:auto" id="inc_img">
+            </div>
+            Time: <span id="inc_time">0</span><br>
+            <span id="con_eg_hat" class="hidden">Egg: <span id="eg_hat">0</span></span>
+            <button onclick="inc_ftc()" id="btn_ftc">Retrieve</button>
+        </div>
+    </div>
+</body>
+</html>

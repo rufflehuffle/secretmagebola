@@ -1,0 +1,60 @@
+.c:hover { /* Clickable */
+    cursor: pointer;
+}
+
+button {
+    width: 100px;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+#sc_1 {
+    display: block;
+}
+
+.sc {
+    text-align: center;
+    margin: auto;
+    display: none;
+}
+
+.oui {
+    outline: 1px solid black;
+    padding: 10px;
+    margin: 5px;
+    background-color: white;
+}
+
+.ui {
+    outline: 1px solid black;
+    display: inline-block;
+    padding: 20px;
+    margin: 5px;
+}
+
+.hidden {
+    display: none;
+}
+
+html, body {
+    height: 90%;
+    display: grid;
+    background-image: url("background.jpg");
+}
+
+#inc {
+    display: grid;
+    height: 64px;
+    width: 64px;
+    padding: 0px;
+    background-size: contain;
+    margin: auto;
+    background-image: url("incubator.png");
+}
+
+#btn_ftc {
+    display: none;
+    width: 100px;
+}
