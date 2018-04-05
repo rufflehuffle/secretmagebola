@@ -15,7 +15,6 @@ var stat_spa = 0; //Special Attack Stat
 var stat_spd = 0; //Special Defense Stat
 var stat_spe = 0; //Speed Stat
 var rn = 0; //Random Number
-var pk_side = 0; //Pokemon Side
 var e_stat_hp = 0; // Enemy Health Stat
 var e_stat_atk = 0; // Enemy Attack Stat
 var e_stat_def = 0; // Enemy Defense Stat
@@ -23,9 +22,9 @@ var e_stat_spa = 0; // Enemy Special Attack Stat
 var e_stat_spd = 0; // Enemy Special Defense Stat
 var e_stat_spe = 0; // Enemy Speed Stat
 var epl_time = 0; // Time left until you can explore again
-var itm_pkb = 0; // How many Pokeballs
-var itm_gtb = 0; //How many Greatballs
-var fnd_itmid = 0;
+var itm_1 = 0; // How many Pokeballs
+var itm_2 = 0; //How many Greatballs
+var fnd_itmid = 0; //Item found while exploring
 
 //u_id = document.getElementById
 var u_id = function(id){
@@ -89,8 +88,8 @@ function define_pk_hat(){
     }
     if (pk_img == "egg/charmander.png"){
         pk_img = "pk/charmander.gif";
-        pk_nm = "Charmander";
-        set_stat(12, 6, 6, 6, 6, 6, 0);
+        pk_nm = "Charmander"; //Set pokemon name to charmander
+        set_stat(12, 6, 6, 6, 6, 6, 0); //Set stats
     }
     if (pk_img == "egg/squirtle.png"){
         pk_img = "pk/squirtle.gif";
@@ -114,19 +113,19 @@ function def_st_eg(x){
         pk_img = "egg/bulbasaur.png";
         u_cl("st_eg", 0).src=pk_img;
         u_id("pk_img").src=pk_img;
-        eg_hat = 1;
+        eg_hat = 1; // ***Test Value***
     }
     if (st_eg == 2){
         pk_img = "egg/charmander.png";
         u_cl("st_eg", 0).src=pk_img;
         u_id("pk_img").src=pk_img;
-        eg_hat = 1;
+        eg_hat = 1; // ***Test Value***
     }
     if (st_eg == 3){
         pk_img = "egg/squirtle.png"
         u_cl("st_eg", 0).src=pk_img;
         u_id("pk_img").src=pk_img;
-        eg_hat = 1;
+        eg_hat = 1; // ***Test Value***
     }
 }
 
@@ -157,13 +156,12 @@ function inc_ftc(){
     u_id("con_eg_hat").style.display="none";
 }
 
-function sw_aud(x){
+function sw_aud(x){ //Music
     var y = "music/" + x + ".mp3";
     u_id("audio").src=y;
 }
 
-function set_stat(a,b,c,d,e,f,g){
-    pk_side = g;
+function set_stat(a,b,c,d,e,f,g){ //Setting Pokemon Stats
     if (g == 0){
         stat_hp = a;
         stat_atk = b;
@@ -188,33 +186,71 @@ function set_stat(a,b,c,d,e,f,g){
     u_id("spe").innerHTML=stat_spe;
 }
 
-//Explore
+//Explore (In dev)
 function epl(x) {
     rn = Math.floor(Math.random()*99) + 1; //Set random number to a integer between 1 - 100
+    console.log(rn) // ***Remove when done***
+    //Route 1
     if (x == "r1" && epl_time == 0) {
-//******************************Experimental*************************************
-        if (rn > 50) {
-            u_id("ntf").innerHTML="You have found a Pokeball";
-            u_id("con_ntf").style.display="block"; //Make notification box visible
-            u_id("btn_clm").style.display="inline-block";
-            ntf_time = 10;
-            u_id("ntf_time").innerHTML=ntf_time;
-            epl_time = 5;
-            fnd_itmid = 1;
-        } else {
-            u_id("ntf").innerHTML="You have found a Greatball";
-            u_id("ntf").style.display="block"; //Make notification box visible
-            epl_time = 5;
-            fnd_itmid = 2;
-        }
+        prg("bar_r1");
+        setTimeout(function() { //Wait Timer for Explore
+            if (rn > 50) {
+                fnd(1);
+            } else {
+                fnd(2);
+            }
+        }, 1000);
     }
 }
 
+//Find Item
+function fnd(itmid){
+    if (itmid == 1){
+        var itmnm = "Poke Ball";
+        var img = "pokeball";
+    }
+    if (itmid == 2){
+        var itmnm = "Great Ball"
+        var img = "greatball";
+    }
+    u_id("ntf").innerHTML="You have found a " + itmnm;
+    fnd_itmid = itmid;
+    u_id("img_ntf").src="item/" + img + ".png";
+    u_id("con_ntf").style.display="block";
+    u_id("btn_clm").style.display="inline-block";
+    ntf_time = 10;
+    u_id("ntf_time").innerHTML=ntf_time;
+    epl_time = 1; // ***Test Value***
+    u_id("con_itm_ntf").style.display="inline-block";
+}
+
+//Claim Item
 function clm(){
     if (fnd_itmid == 1){
-        itm_pkb = itm_pkb + 1;
+        itm_1 = itm_1 + 1;
+        var itmnm = "Poke Ball";
     }
     if (fnd_itmid == 2){
-        itm_gtb = itm_gtb + 1;
+        itm_2 = itm_2 + 1;
+        var itmnm = "Great Ball";
+    }
+    u_id("ntf").innerHTML=itmnm + " sent to bag.";
+    u_id("btn_clm").style.display="none";
+    u_id("itm_1").innerHTML=itm_1;
+    u_id("itm_2").innerHTML=itm_2;
+}
+
+function prg(bar){
+    var width = 0;
+    var interval = setInterval(frame, 10);
+    function frame(){
+        if (width >= 100){
+            clearInterval(interval);
+            width = 0;
+            u_id(bar).style.width = width + "%";
+        } else {
+            width++;
+            u_id(bar).style.width = width + "%";
+        }
     }
 }

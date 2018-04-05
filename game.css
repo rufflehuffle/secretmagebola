@@ -47,12 +47,12 @@ html, body {
     height: 90%;
     display: grid;
 }
-
+/*Background Image*/
 html {
     background-image: url("background.jpg");
     background-size: fill;
 }
-
+/*Incubator*/
 #inc {
     display: grid;
     height: 64px;
@@ -62,8 +62,19 @@ html {
     margin: auto;
     background-image: url("incubator.png");
 }
-
+/*Retrieve Button*/
 #btn_ftc {
     display: none;
     width: 100px;
+}
+/*Progress Bar for Route 1*/
+#prg_r1 {
+    height: 5px;
+    background-color: lightgray;
+}
+
+#bar_r1 {
+    width: 0%;
+    height: 5px;
+    background-color: green;
 }

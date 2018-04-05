@@ -1,12 +1,19 @@
 High Priority:
-    -Create Explore System
+    -Create Explore System (in progress)
+        -Add progress bar to simulate searching
 
 Medium Priority:
-    -Clean Up HTML Code
-    -Add Comments
+    -Inventory System (in progress)
+        -Add icons
+        -Separate sections
+    -Training System
 
 Low Priority:
     -Create Battle System
     -Fix Padding Glitch (Padding changes size after notifications are removed)
     -Create Saving System
     -Progress Bar for Incubation & etc.
+    -Add Store & Currency
+    -Add Automation to explore
+    -Clean up code
+    -Add comments

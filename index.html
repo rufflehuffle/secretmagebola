@@ -64,6 +64,18 @@
                 </div>
             </div>
         </div>
+<!-- Player -->
+        <div id="con_ply" class="oui">
+            Trainer
+            <div id="ui">
+<!-- Bag -->
+            <button onclick="tog_vis('bag')">Bag</button>
+                <div id="bag" class="hidden oui">
+                    <img src="item/pokeball.png"> x<span id="itm_1">0</span><br>
+                    <img src="item/greatball.png"> x<span id="itm_2">0</span>
+                </div>
+            </div>
+        </div>
 <!-- Actions -->
         <div class="hidden oui" id="con_act">
             Actions<br>
@@ -76,7 +88,13 @@
 <!-- Explore -->
                 <button onclick="tog_vis('epl')">Explore</button><br>
                 <div class="hidden ui" style="padding:5px;" id="epl">
-                    <button onclick="epl('r1')">Route 1</button>
+                    <div onclick="epl('r1')" style="cursor: pointer; outline: 1px solid black;">
+                        Route 1
+                        <div id="prg_r1">
+                            <div id="bar_r1">
+                            </div>
+                        </div>
+                    </div>
                 </div>
 <!-- Train -->
                 <button onclick="tog_vis('trn')">Train</button>
@@ -90,17 +108,13 @@
                 </div>
             </div>
         </div>
-<!-- Player -->
-        <div id="con_ply" class="oui">
-            Trainer
-            <div id="ui">
-                <button>Bag</button>
-            </div>
-        </div>
 <!-- Notifications -->
         <div id="con_ntf" class="hidden oui">
             <div id="ntf"></div>
-            <button id="btn_clm" class="hidden" onclick="clm()">Claim (<span id="ntf_time"></span>)</button>
+            <div id="con_itm_ntf" class="hidden">
+                <img src="" id="img_ntf"><br>
+                <button id="btn_clm" onclick="clm()">Claim (<span id="ntf_time"></span>)</button>
+            </div>
         </div>
 <!-- Incubator -->
         <div class="oui" id="con_inc">
