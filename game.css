@@ -41,6 +41,9 @@ button:hover {
 html, body {
     height: 90%;
     display: grid;
+}
+
+html {
     background-image: url("background.jpg");
 }
 
