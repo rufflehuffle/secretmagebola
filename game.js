@@ -22,6 +22,10 @@ var e_stat_def = 0; // Enemy Defense Stat
 var e_stat_spa = 0; // Enemy Special Attack Stat
 var e_stat_spd = 0; // Enemy Special Defense Stat
 var e_stat_spe = 0; // Enemy Speed Stat
+var epl_time = 0; // Time left until you can explore again
+var itm_pkb = 0; // How many Pokeballs
+var itm_gtb = 0; //How many Greatballs
+var fnd_itmid = 0;
 
 //u_id = document.getElementById
 var u_id = function(id){
@@ -67,8 +71,13 @@ function timer() {
     }
     //Notification Timer
     ntf_time = ntf_time - 1; //Subtract 1 from time left for notification
+    u_id("ntf_time").innerHTML=ntf_time;
     if (ntf_time == 0) { //Check if notification time is up
         u_id("con_ntf").style.display="none"; //Make notification box invisible
+    }
+    //Explore Timer
+    if (epl_time > 0) {
+        epl_time = epl_time - 1;
     }
 }
 
@@ -182,14 +191,30 @@ function set_stat(a,b,c,d,e,f,g){
 //Explore
 function epl(x) {
     rn = Math.floor(Math.random()*99) + 1; //Set random number to a integer between 1 - 100
-    if (x == "r1") {
-        if (rn > 50){
+    if (x == "r1" && epl_time == 0) {
+//******************************Experimental*************************************
+        if (rn > 50) {
             u_id("ntf").innerHTML="You have found a Pokeball";
             u_id("con_ntf").style.display="block"; //Make notification box visible
             u_id("btn_clm").style.display="inline-block";
+            ntf_time = 10;
+            u_id("ntf_time").innerHTML=ntf_time;
+            epl_time = 5;
+            fnd_itmid = 1;
         } else {
-            u_id("ntf").innerHTML="You have found a greatball";
+            u_id("ntf").innerHTML="You have found a Greatball";
             u_id("ntf").style.display="block"; //Make notification box visible
+            epl_time = 5;
+            fnd_itmid = 2;
         }
+    }
+}
+
+function clm(){
+    if (fnd_itmid == 1){
+        itm_pkb = itm_pkb + 1;
+    }
+    if (fnd_itmid == 2){
+        itm_gtb = itm_gtb + 1;
     }
 }

@@ -16,7 +16,7 @@
             <button onclick="sc_sw('sc_2')">Start</button>
         </div>
     </div>
-
+<!-- Introduction -->
     <div id="sc_2" class="sc">
         <div class="oui">
         Welcome to the World of Pokemon!<br>
@@ -31,7 +31,7 @@
         (Click on an egg to choose.)
         </div>
     </div>
-
+<!-- Confirmation -->
     <div id="sc_3" class="sc">
         <div class="oui">
             Are you sure you want to pick this egg?<br>
@@ -90,10 +90,17 @@
                 </div>
             </div>
         </div>
+<!-- Player -->
+        <div id="con_ply" class="oui">
+            Trainer
+            <div id="ui">
+                <button>Bag</button>
+            </div>
+        </div>
 <!-- Notifications -->
         <div id="con_ntf" class="hidden oui">
             <div id="ntf"></div>
-            <button id="btn_clm" class="hidden">Claim</button>
+            <button id="btn_clm" class="hidden" onclick="clm()">Claim (<span id="ntf_time"></span>)</button>
         </div>
 <!-- Incubator -->
         <div class="oui" id="con_inc">
