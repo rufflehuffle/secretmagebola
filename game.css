@@ -68,12 +68,13 @@ html {
     width: 100px;
 }
 /*Progress Bar for Route 1*/
-#prg_r1 {
+.prg {
     height: 5px;
     background-color: lightgray;
+    width: 100%;
 }
 
-#bar_r1 {
+.bar {
     width: 0%;
     height: 5px;
     background-color: green;

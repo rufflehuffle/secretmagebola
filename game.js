@@ -159,7 +159,7 @@ function inc_ftc(){
 //Music
 function sw_aud(x){
     var y = "music/" + x + ".mp3";
-    u_id("audio").src=y;
+    u_id("audioloop").src=y;
 }
 
 function set_stat(a,b,c,d,e,f,g){ //Setting Pokemon Stats
@@ -244,6 +244,7 @@ function clm(){
     u_id("itm_2").innerHTML=itm_2;
 }
 
+//Fill Bar
 function prg(bar){
     var width = 0;
     var interval = setInterval(frame, 10);

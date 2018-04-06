@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <audio src="" autoplay loop id="audio"></audio>
+    <audio src="" autoplay loop id="audioloop"></audio>
 
     <div id="sc_1" class="sc">
         <div class="oui">
@@ -90,21 +90,26 @@
                 <div class="hidden ui" style="padding:5px;" id="epl">
                     <div onclick="epl('r1')" style="cursor: pointer; outline: 1px solid black;">
                         Route 1
-                        <div id="prg_r1">
-                            <div id="bar_r1">
+                        <div id="prg_r1" class="prg">
+                            <div id="bar_r1" class="bar">
                             </div>
                         </div>
                     </div>
                 </div>
 <!-- Train -->
                 <button onclick="tog_vis('trn')">Train</button>
-                <div class="hidden ui" style="padding:5px;" id="trn">
-                    <img src="bag/HP_S.png">
-                    <img src="bag/ATK_S.png">
-                    <img src="bag/DEF_S.png">
-                    <img src="bag/SPA_S.png">
-                    <img src="bag/SPD_S.png">
-                    <img src="bag/SPE_S.png">
+                <div class="hidden ui" style="padding:0px;" id="trn">
+                    <!-- Experimental onclick function -->
+                    <img src="bag/HP_S.png" onclick="prg('bar_trn')" class="c">
+                    <img src="bag/ATK_S.png" onclick="prg('bar_trn')" class="c">
+                    <img src="bag/DEF_S.png" onclick="prg('bar_trn')" class="c">
+                    <img src="bag/SPA_S.png" onclick="prg('bar_trn')" class="c">
+                    <img src="bag/SPD_S.png" onclick="prg('bar_trn')" class="c">
+                    <img src="bag/SPE_S.png" onclick="prg('bar_trn')" class="c"><br>
+                    <div id="prg_trn" class="prg">
+                        <div id="bar_trn" class="bar">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
