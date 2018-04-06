@@ -14,12 +14,16 @@
     -Create Battle System
     -Create Saving System
     -Add Store & Currency
+
+[D] Priority:
+    -Fix Padding Glitch (Padding changes size after notifications are removed)
+        -Make containers bigger (ex: cookie clicker)
+    -Add Automation to explore
+    -Nicknames
     -Code related
         -Clean up code
         -Add comments
 
-[D] Priority:
+[F] Priority:
     -Story OMEGALUL
-    -Fix Padding Glitch (Padding changes size after notifications are removed)
-        -Make containers bigger (ex: cookie clicker)
-    -Add Automation to explore
+    -Make game fun OMEGALUL

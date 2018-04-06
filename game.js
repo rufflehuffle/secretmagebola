@@ -26,12 +26,12 @@ var itm_1 = 0; // How many Pokeballs
 var itm_2 = 0; //How many Greatballs
 var fnd_itmid = 0; //Item found while exploring
 
-//u_id = document.getElementById
+//u_id = document.getElementById (update specific value)
 var u_id = function(id){
     return document.getElementById(id);
 };
 
-//u_cl = document.getElementByClassName
+//u_cl = document.getElementByClassName (update general value)
 var u_cl = function(cl,id){
     return document.getElementsByClassName(cl)[id];
 };
@@ -156,7 +156,8 @@ function inc_ftc(){
     u_id("con_eg_hat").style.display="none";
 }
 
-function sw_aud(x){ //Music
+//Music
+function sw_aud(x){
     var y = "music/" + x + ".mp3";
     u_id("audio").src=y;
 }
