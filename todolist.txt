@@ -1,19 +1,25 @@
-High Priority:
-    -Create Explore System (in progress)
-        -Add progress bar to simulate searching
+[S] Priority:
 
-Medium Priority:
+[A] Priority:
+    -Training System
+
+[B] Priority:
     -Inventory System (in progress)
         -Add icons
         -Separate sections
-    -Training System
+    -Add to Explore System
+        -Balance Route 1
 
-Low Priority:
+[C] Priority:
     -Create Battle System
-    -Fix Padding Glitch (Padding changes size after notifications are removed)
     -Create Saving System
-    -Progress Bar for Incubation & etc.
     -Add Store & Currency
+    -Code related
+        -Clean up code
+        -Add comments
+
+[D] Priority:
+    -Story OMEGALUL
+    -Fix Padding Glitch (Padding changes size after notifications are removed)
+        -Make containers bigger (ex: cookie clicker)
     -Add Automation to explore
-    -Clean up code
-    -Add comments

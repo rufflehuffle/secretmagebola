@@ -46,7 +46,7 @@ window.setInterval(timer, 1000)
 
 function timer() {
     //Incubation
-    if (pk_inc == 1) {
+    if (pk_inc == 1) { //Check time of Incubation
         eg_hat = eg_hat - 1;
         inc_time = inc_time + 1;
         u_id("inc_time").innerHTML=inc_time;
@@ -86,17 +86,17 @@ function define_pk_hat(){
         pk_nm = "Bulbasaur"; //Set pokemon name to bulbasaur
         set_stat(12, 6, 6, 6, 6, 6, 0); //Set stats
     }
-    if (pk_img == "egg/charmander.png"){
-        pk_img = "pk/charmander.gif";
+    if (pk_img == "egg/charmander.png"){ //Check if egg is a charmander egg
+        pk_img = "pk/charmander.gif"; //Set pokemon image to charmander
         pk_nm = "Charmander"; //Set pokemon name to charmander
         set_stat(12, 6, 6, 6, 6, 6, 0); //Set stats
     }
-    if (pk_img == "egg/squirtle.png"){
-        pk_img = "pk/squirtle.gif";
-        pk_nm = "Squirtle";
-        set_stat(12, 6, 6, 6, 6, 6, 0);
+    if (pk_img == "egg/squirtle.png"){ //Check if egg is squirtle egg
+        pk_img = "pk/squirtle.gif"; //Set pokemon Image to squirtle
+        pk_nm = "Squirtle"; //Set pokemon name to squirtle
+        set_stat(12, 6, 6, 6, 6, 6, 0); //Set stats
     }
-    u_id("pk_nm").innerHTML=pk_nm; //Update pokemon name
+    u_id("pk_nm").innerHTML=pk_nm; //Update pokemon name in html
 }
 
 //Select Starter
@@ -107,10 +107,10 @@ function sel_st(x){
 }
 
 //Define Starter Egg
-function def_st_eg(x){
-    var st_eg = x;
-    if (st_eg == 1){
-        pk_img = "egg/bulbasaur.png";
+function def_st_eg(x){ //Defines what pokemon it is
+    var st_eg = x; //Variable
+    if (st_eg == 1){ //if Egg is equal to 1
+        pk_img = "egg/bulbasaur.png"; //set pokemon image to bulbasaur
         u_cl("st_eg", 0).src=pk_img;
         u_id("pk_img").src=pk_img;
         eg_hat = 1; // ***Test Value***
@@ -192,14 +192,17 @@ function epl(x) {
     console.log(rn) // ***Remove when done***
     //Route 1
     if (x == "r1" && epl_time == 0) {
-        prg("bar_r1");
+        prg("bar_r1"); //progress bar on route 1
         setTimeout(function() { //Wait Timer for Explore
-            if (rn > 50) {
-                fnd(1);
-            } else {
-                fnd(2);
+            if (epl_time == 0){ //Checks if explore timer is 0
+                if (rn > 50) { //Checks the random number generated
+                    fnd(1);
+                } else {
+                    fnd(2);
+                }
             }
         }, 1000);
+    epl_time = 1; // **Test value**
     }
 }
 
@@ -220,7 +223,6 @@ function fnd(itmid){
     u_id("btn_clm").style.display="inline-block";
     ntf_time = 10;
     u_id("ntf_time").innerHTML=ntf_time;
-    epl_time = 1; // ***Test Value***
     u_id("con_itm_ntf").style.display="inline-block";
 }
 
@@ -235,6 +237,7 @@ function clm(){
         var itmnm = "Great Ball";
     }
     u_id("ntf").innerHTML=itmnm + " sent to bag.";
+    ntf_time = 3;
     u_id("btn_clm").style.display="none";
     u_id("itm_1").innerHTML=itm_1;
     u_id("itm_2").innerHTML=itm_2;
