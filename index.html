@@ -8,8 +8,9 @@
 </head>
 
 <body>
+<!-- Music -->
     <audio src="" autoplay loop id="audioloop"></audio>
-
+<!-- Start -->
     <div id="sc_1" class="sc">
         <div class="oui">
             Pokemon RPG<br>
@@ -24,9 +25,9 @@
         But first, choose an egg.<br>
         It will hatch into a fine partner to accompany you on your journey.<br>
         <div class="ui">
-        <img src="egg/bulbasaur.png" onclick="sel_st(1)" class="c">
-        <img src="egg/charmander.png" onclick="sel_st(2)" class="c">
-        <img src="egg/squirtle.png" onclick="sel_st(3)" class="c">
+        <img src="egg/bulbasaur.png" onclick="sel_st(0)" class="c">
+        <img src="egg/charmander.png" onclick="sel_st(1)" class="c">
+        <img src="egg/squirtle.png" onclick="sel_st(2)" class="c">
         </div><br>
         (Click on an egg to choose.)
         </div>
@@ -83,7 +84,18 @@
             <div class="ui" style="padding: 5px;">
                 <button onclick="tog_vis('fgt')">Fight</button><br>
                 <div class="hidden ui" style="padding:5px;" id="fgt">
-                    <button>Rival</button>
+                    <button onclick="tog_vis('inf_riv')">Rival</button>
+                    <div id="inf_riv" class="hidden oui">
+                        Gary<br>
+                        <img src="trainer/gary.png"><br>
+                        <button onclick="sc_sw('sc_5')">Battle</button><br>
+                        <button onclick="tog_vis('riv_team')">Team</button>
+                        <div id="riv_team" class="hidden oui">
+                            Bulbasaur<br>
+                            <img src="pk/bulbasaur.gif"><br>
+                            Lvl. 5
+                        </div>
+                    </div>
                 </div>
 <!-- Explore -->
                 <button onclick="tog_vis('epl')">Explore</button><br>
@@ -100,12 +112,12 @@
                 <button onclick="tog_vis('trn')">Train</button>
                 <div class="hidden ui" style="padding:0px;" id="trn">
                     <!-- Experimental onclick function -->
-                    <img src="bag/HP_S.png" onclick="prg('bar_trn')" class="c">
-                    <img src="bag/ATK_S.png" onclick="prg('bar_trn')" class="c">
-                    <img src="bag/DEF_S.png" onclick="prg('bar_trn')" class="c">
-                    <img src="bag/SPA_S.png" onclick="prg('bar_trn')" class="c">
-                    <img src="bag/SPD_S.png" onclick="prg('bar_trn')" class="c">
-                    <img src="bag/SPE_S.png" onclick="prg('bar_trn')" class="c"><br>
+                    <img src="bag/HP_S.png" onclick="trn(0)" class="c">
+                    <img src="bag/ATK_S.png" onclick="trn(1)" class="c">
+                    <img src="bag/DEF_S.png" onclick="trn(2)" class="c">
+                    <img src="bag/SPA_S.png" onclick="trn(3)" class="c">
+                    <img src="bag/SPD_S.png" onclick="trn(4)" class="c">
+                    <img src="bag/SPE_S.png" onclick="trn(5)" class="c"><br>
                     <div id="prg_trn" class="prg">
                         <div id="bar_trn" class="bar">
                         </div>
@@ -116,10 +128,13 @@
 <!-- Notifications -->
         <div id="con_ntf" class="hidden oui">
             <div id="ntf"></div>
-            <div id="con_itm_ntf" class="hidden">
+            <div id="con_itm_ntf" class="hidden" style="width: 200px">
                 <img src="" id="img_ntf"><br>
                 <button id="btn_clm" onclick="clm()">Claim (<span id="ntf_time"></span>)</button>
             </div>
+        </div>
+        <div id="con_ntf2" class="hidden oui" style="width: 200px;">
+            <div id="ntf2"></div>
         </div>
 <!-- Incubator -->
         <div class="oui" id="con_inc">
@@ -131,6 +146,10 @@
             <span id="con_eg_hat" class="hidden">Egg: <span id="eg_hat">0</span></span>
             <button onclick="inc_ftc()" id="btn_ftc">Retrieve</button>
         </div>
+    </div>
+<!-- Screen 5-->
+    <div id="sc_5" class="sc">
+        <button onclick="sc_sw('sc_4')">fk go bak</button>
     </div>
 </body>
 </html>

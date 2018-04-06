@@ -1,29 +1,36 @@
 [S] Priority:
 
 [A] Priority:
-    -Training System
+    -Create Battle System (in progress)
+    -Create Saving System
 
 [B] Priority:
-    -Inventory System (in progress)
-        -Add icons
-        -Separate sections
     -Add to Explore System
         -Balance Route 1
+        -Add more areas & unlocking areas
+    -Make Actions Menu look nicer
+        -Have other elements disappear when choosing one option (fight, train, explore)
 
 [C] Priority:
-    -Create Battle System
-    -Create Saving System
     -Add Store & Currency
+    -Notification System (in progress)
+        -Fade in and fade out
+        -Sounds
+    -Inventory System (in progress)
+        -Separate sections
+    -Training System (in progress)
+        -Add more bags (M, L)
+        -Make bags quantifiable
+        -Balancing
 
 [D] Priority:
-    -Fix Padding Glitch (Padding changes size after notifications are removed)
-        -Make containers bigger (ex: cookie clicker)
-    -Add Automation to explore
     -Nicknames
     -Code related
         -Clean up code
         -Add comments
+        -Make clearer variable and function names
+    -Fix Notification Sizing Glitch (somewhat fixed by setting fixed width)
 
 [F] Priority:
-    -Story OMEGALUL
-    -Make game fun OMEGALUL
+    -Story
+    -Add a way to automate exploring

@@ -1,30 +1,58 @@
 //Variables
 var st = 0; //Starter
 var sc_prev = "sc_1"; //Previous Screen
-var pk_img = 0; //Pokemon Image
 var pk_inc = 0; //Is pokemon being incubated? 0 = no, 1 = yes
 var eg_hat = 0; //Egg Hatch Timer
 var inc_time = 0; //Time incubated
 var ntf_time = 0; //Notification Timer
+var ntf2_time = 0;
 var pk_lvl = 0; //Pokemon Level
-var pk_nm = 0; //Pokemon Name
-var stat_hp = 0; //Health Stat
-var stat_atk = 0; //Attack Stat
-var stat_def = 0; //Defense Stat
-var stat_spa = 0; //Special Attack Stat
-var stat_spd = 0; //Special Defense Stat
-var stat_spe = 0; //Speed Stat
 var rn = 0; //Random Number
-var e_stat_hp = 0; // Enemy Health Stat
-var e_stat_atk = 0; // Enemy Attack Stat
-var e_stat_def = 0; // Enemy Defense Stat
-var e_stat_spa = 0; // Enemy Special Attack Stat
-var e_stat_spd = 0; // Enemy Special Defense Stat
-var e_stat_spe = 0; // Enemy Speed Stat
 var epl_time = 0; // Time left until you can explore again
 var itm_1 = 0; // How many Pokeballs
 var itm_2 = 0; //How many Greatballs
 var fnd_itmid = 0; //Item found while exploring
+var trn_time = 0;
+var itmnm = 0;
+var pk_img = 0;
+var pk_nm = 0;
+
+//Arrays
+var stat = [
+    0, //HP  (stat[0])
+    0, //ATK (stat[1])
+    0, //DEF (stat[2])
+    0, //SPA (stat[3])
+    0, //SPD (stat[4])
+    0  //SPE (stat[5])
+];
+var e_stat = [
+    0, //HP  (e_stat[0])
+    0, //ATK (e_stat[1])
+    0, //DEF (e_stat[2])
+    0, //SPA (e_stat[3])
+    0, //SPD (e_stat[4])
+    0  //SPE (e_stat[5])
+];
+var inv = [ //Inventory
+    0, //Pokeballs
+    0  //Greatballs
+];
+var pk_nms = [
+    "Bulbasaur",
+    "Charmander",
+    "Squirtle"
+];
+var pk_imgs = [ //Pokemon Image
+    "egg/bulbasaur.png",
+    "egg/charmander.png",
+    "egg/squirtle.png",
+    "pk/bulbasaur.gif",
+    "pk/charmander.gif",
+    "pk/squirtle.gif"
+];
+var itms = ["Poke Ball", "Great Ball"];
+var itm_imgs = ["pokeball", "greatball"];
 
 //u_id = document.getElementById (update specific value)
 var u_id = function(id){
@@ -35,7 +63,6 @@ var u_id = function(id){
 var u_cl = function(cl,id){
     return document.getElementsByClassName(cl)[id];
 };
-
 //Toggle Visibility
 function tog_vis(id){
     u_id(id).style.display = u_id(id).style.display==='block' ? 'none' : 'block';
@@ -43,7 +70,6 @@ function tog_vis(id){
 
 //Do every second
 window.setInterval(timer, 1000)
-
 function timer() {
     //Incubation
     if (pk_inc == 1) { //Check time of Incubation
@@ -74,28 +100,30 @@ function timer() {
     if (ntf_time == 0) { //Check if notification time is up
         u_id("con_ntf").style.display="none"; //Make notification box invisible
     }
+    if (ntf2_time > 0){
+        ntf2_time = ntf2_time - 1;
+    } else {
+        u_id("con_ntf2").style.display="none";
+    }
     //Explore Timer
     if (epl_time > 0) {
         epl_time = epl_time - 1;
     }
+    //Training Timer
+    if (trn_time > 0) {
+        trn_time = trn_time - 1;
+    }
 }
 
+//Find out what pokemon hatches from the egg
 function define_pk_hat(){
-    if (pk_img == "egg/bulbasaur.png"){ //Check if egg is a bulbasaur egg
-        pk_img = "pk/bulbasaur.gif"; //Set pokemon image to bulbasaur
-        pk_nm = "Bulbasaur"; //Set pokemon name to bulbasaur
-        set_stat(12, 6, 6, 6, 6, 6, 0); //Set stats
+    for (i = 0; i < 3; i++){
+        if (st == i){
+            pk_img = pk_imgs[i+3];
+            pk_nm = pk_nms[i];
+        }
     }
-    if (pk_img == "egg/charmander.png"){ //Check if egg is a charmander egg
-        pk_img = "pk/charmander.gif"; //Set pokemon image to charmander
-        pk_nm = "Charmander"; //Set pokemon name to charmander
-        set_stat(12, 6, 6, 6, 6, 6, 0); //Set stats
-    }
-    if (pk_img == "egg/squirtle.png"){ //Check if egg is squirtle egg
-        pk_img = "pk/squirtle.gif"; //Set pokemon Image to squirtle
-        pk_nm = "Squirtle"; //Set pokemon name to squirtle
-        set_stat(12, 6, 6, 6, 6, 6, 0); //Set stats
-    }
+    set_stat(12, 6, 6, 6, 6, 6, 0); //Set stats
     u_id("pk_nm").innerHTML=pk_nm; //Update pokemon name in html
 }
 
@@ -107,26 +135,15 @@ function sel_st(x){
 }
 
 //Define Starter Egg
-function def_st_eg(x){ //Defines what pokemon it is
-    var st_eg = x; //Variable
-    if (st_eg == 1){ //if Egg is equal to 1
-        pk_img = "egg/bulbasaur.png"; //set pokemon image to bulbasaur
-        u_cl("st_eg", 0).src=pk_img;
-        u_id("pk_img").src=pk_img;
-        eg_hat = 1; // ***Test Value***
+function def_st_eg(x){
+    for (i = 0; i < 3; i++){
+        if (x == i){
+            pk_img = pk_imgs[i];
+        }
     }
-    if (st_eg == 2){
-        pk_img = "egg/charmander.png";
-        u_cl("st_eg", 0).src=pk_img;
-        u_id("pk_img").src=pk_img;
-        eg_hat = 1; // ***Test Value***
-    }
-    if (st_eg == 3){
-        pk_img = "egg/squirtle.png"
-        u_cl("st_eg", 0).src=pk_img;
-        u_id("pk_img").src=pk_img;
-        eg_hat = 1; // ***Test Value***
-    }
+    u_cl("st_eg", 0).src=pk_img;
+    u_id("pk_img").src=pk_img;
+    eg_hat = 1;
 }
 
 //Screen Swap
@@ -162,29 +179,25 @@ function sw_aud(x){
     u_id("audioloop").src=y;
 }
 
-function set_stat(a,b,c,d,e,f,g){ //Setting Pokemon Stats
+//Setting Pokemon Stats
+function set_stat(a,b,c,d,e,f,g){
     if (g == 0){
-        stat_hp = a;
-        stat_atk = b;
-        stat_def = c;
-        stat_spa = d;
-        stat_spd = e;
-        stat_spe = f;
+        stat[0] = a;
+        stat[1] = b;
+        stat[2] = c;
+        stat[3] = d;
+        stat[4] = e;
+        stat[5] = f;
     }
     if (g == 1){
-        e_stat_hp = a;
-        e_stat_atk = b;
-        e_stat_def = c;
-        e_stat_spa = d;
-        e_stat_spd = e;
-        e_stat_spe = f;
+        e_stat[0] = a;
+        e_stat[1] = b;
+        e_stat[2] = c;
+        e_stat[3] = d;
+        e_stat[4] = e;
+        e_stat[5] = f;
     }
-    u_id("hp").innerHTML=stat_hp;
-    u_id("atk").innerHTML=stat_atk;
-    u_id("def").innerHTML=stat_def;
-    u_id("spa").innerHTML=stat_spa;
-    u_id("spd").innerHTML=stat_spd;
-    u_id("spe").innerHTML=stat_spe;
+    u_stat();
 }
 
 //Explore (In dev)
@@ -193,13 +206,13 @@ function epl(x) {
     console.log(rn) // ***Remove when done***
     //Route 1
     if (x == "r1" && epl_time == 0) {
-        prg("bar_r1"); //progress bar on route 1
+        prg("bar_r1", 1); //progress bar on route 1
         setTimeout(function() { //Wait Timer for Explore
             if (epl_time == 0){ //Checks if explore timer is 0
                 if (rn > 50) { //Checks the random number generated
-                    fnd(1);
+                    fnd(0);
                 } else {
-                    fnd(2);
+                    fnd(1);
                 }
             }
         }, 1000);
@@ -208,17 +221,13 @@ function epl(x) {
 }
 
 //Find Item
-function fnd(itmid){
-    if (itmid == 1){
-        var itmnm = "Poke Ball";
-        var img = "pokeball";
-    }
-    if (itmid == 2){
-        var itmnm = "Great Ball"
-        var img = "greatball";
+function fnd(x){
+    for (i = 0; i < itms.length; i++){
+        itmnm = itms[x];
+        var img = itm_imgs[x];
     }
     u_id("ntf").innerHTML="You have found a " + itmnm;
-    fnd_itmid = itmid;
+    fnd_itmid = x;
     u_id("img_ntf").src="item/" + img + ".png";
     u_id("con_ntf").style.display="block";
     u_id("btn_clm").style.display="inline-block";
@@ -229,23 +238,20 @@ function fnd(itmid){
 
 //Claim Item
 function clm(){
-    if (fnd_itmid == 1){
-        itm_1 = itm_1 + 1;
-        var itmnm = "Poke Ball";
-    }
-    if (fnd_itmid == 2){
-        itm_2 = itm_2 + 1;
-        var itmnm = "Great Ball";
+    for (i = 0; i < itms.length; i++){
+        if (fnd_itmid == i){
+            inv[i] = inv[i] + 1;
+        }
     }
     u_id("ntf").innerHTML=itmnm + " sent to bag.";
     ntf_time = 3;
     u_id("btn_clm").style.display="none";
-    u_id("itm_1").innerHTML=itm_1;
-    u_id("itm_2").innerHTML=itm_2;
+    u_id("itm_1").innerHTML=inv[0];
+    u_id("itm_2").innerHTML=inv[1];
 }
 
 //Fill Bar
-function prg(bar){
+function prg(bar, dist){
     var width = 0;
     var interval = setInterval(frame, 10);
     function frame(){
@@ -254,8 +260,38 @@ function prg(bar){
             width = 0;
             u_id(bar).style.width = width + "%";
         } else {
-            width++;
+            width = width + dist;
             u_id(bar).style.width = width + "%";
         }
+    }
+}
+
+//Train
+function trn(x){
+    if (trn_time == 0){
+        prg("bar_trn", 0.2);
+        setTimeout(function(){
+            var stat_gain = ["2 HP", "1 ATK", "1 DEF", "1 SPA", "1 SPD", "1 SPE"];
+            var bag = ["Azurill", "Machop", "Aron", "Litwick", "Flabebe", "Zubat"];
+            if (x == 0){
+                stat[x] = stat[x] + 2;
+            } else {
+            stat[x] =  stat[x] + 1;
+            }
+            u_stat();
+            tog_vis("con_ntf2");
+            u_id("ntf2").innerHTML = pk_nm + " gained " + stat_gain[x] + " from breaking open a " + bag[x] + " bag.";
+            ntf2_time = 5;
+        }, 5000)
+        trn_time = 5;
+    }
+}
+
+//Update Stats
+function u_stat(){
+    var a = ["hp", "atk", "def", "spa", "spd", "spe"]
+    var i;
+    for (i = 0; i < a.length; i++){
+        u_id(a[i]).innerHTML=stat[i];
     }
 }
