@@ -1,5 +1,6 @@
 [S] Priority:
-
+    -None
+    
 [A] Priority:
     -Create Battle System (in progress)
     -Create Saving System

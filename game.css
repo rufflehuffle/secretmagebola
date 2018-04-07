@@ -1,81 +1,82 @@
-/* Clickable */
-.c:hover {
-    cursor: pointer;
-}
+/* HTML Elements */
+    /* Button */
+        button {
+            width: 100px;
+        }
+        button:hover {
+            cursor: pointer;
+        }
+    /* For Centering Other Elements */
+        html, body {
+            height: 90%;
+            display: grid;
+        }
+    /* Background-Image */
+        html {
+            background-image: url("background.jpg");
+            background-size: fill;
+        }
 
-button {
-    width: 100px;
-}
+/* IDs */
+    /* Screen 1*/
+        #sc_1 {
+            display: block;
+        }
+    /* Incubator */
+        #inc {
+            display: grid;
+            height: 64px;
+            width: 64px;
+            padding: 0px;
+            background-size: contain;
+            margin: auto;
+            background-image: url("incubator.png");
+        }
+    /* Retrieve Button */
+        #btn_ftc {
+            display: none;
+            width: 100px;
+        }
 
-button:hover {
-    cursor: pointer;
-}
 
-#sc_1 {
-    display: block;
-}
-
-/* Screen */
-.sc {
-    text-align: center;
-    margin: auto;
-    display: none;
-}
-
-/* Outer User Input */
-.oui {
-    outline: 1px solid black;
-    padding: 10px;
-    margin: 5px;
-    background-color: white;
-}
-
-/* User Input */
-.ui {
-    outline: 1px solid black;
-    display: inline-block;
-    padding: 20px;
-    margin: 5px;
-}
-
-/* Hidden */
-.hidden {
-    display: none;
-}
-
-html, body {
-    height: 90%;
-    display: grid;
-}
-/*Background Image*/
-html {
-    background-image: url("background.jpg");
-    background-size: fill;
-}
-/*Incubator*/
-#inc {
-    display: grid;
-    height: 64px;
-    width: 64px;
-    padding: 0px;
-    background-size: contain;
-    margin: auto;
-    background-image: url("incubator.png");
-}
-/*Retrieve Button*/
-#btn_ftc {
-    display: none;
-    width: 100px;
-}
-/*Progress Bar for Route 1*/
-.prg {
-    height: 5px;
-    background-color: lightgray;
-    width: 100%;
-}
-
-.bar {
-    width: 0%;
-    height: 5px;
-    background-color: green;
-}
+/* Class */
+    /* Progress Bar*/
+        .prg {
+            height: 5px;
+            background-color: lightgray;
+            width: 100%;
+        }
+    /* Progress Bar Filling */
+        .bar {
+            width: 0%;
+            height: 5px;
+            background-color: green;
+        }
+    /* Hidden */
+        .hidden {
+            display: none;
+        }
+    /* Screen */
+        .sc {
+            text-align: center;
+            margin: auto;
+            display: none;
+        }
+    /* Outer User Input */
+        .oui {
+            outline: 1px solid black;
+            padding: 10px;
+            margin: 5px;
+            background-color: white;
+        }
+    /* User Input */
+        .ui {
+            outline: 1px solid black;
+            display: inline-block;
+            padding: 20px;
+            margin: 5px;
+        }
+    /* Clickable */
+        .c:hover {
+            cursor: pointer;
+        }
