@@ -64,8 +64,8 @@
         ];
     //Item Images
         const itm_imgs = [
-            "itm/pokeball.png",
-            "itm/greatball.png"
+            "item/pokeball.png",
+            "item/greatball.png"
         ];
     //Stat Gains for Training Bags
         const stat_gain = [
@@ -95,11 +95,14 @@
     const u_cl = function(cl,id){
         return document.getElementsByClassName(cl)[id];
     };
-//Toggle Visibility
+//Toggle Visibility (Starts off invisible)
     function tog_vis(id){
         u_id(id).style.display = u_id(id).style.display==='block' ? 'none' : 'block';
     }
-
+//Toggle Visiblity (Starts off visible)
+    function tog_invis(id){
+        u_id(id).style.display = u_id(id).style.display==='none' ? 'block' : 'none';
+    }
 //Do every second
     window.setInterval(timer, 1000)
     function timer() {

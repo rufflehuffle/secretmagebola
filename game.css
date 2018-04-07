@@ -39,7 +39,7 @@
         }
 
 
-/* Class */
+/* Classes */
     /* Progress Bar*/
         .prg {
             height: 5px;
@@ -51,10 +51,6 @@
             width: 0%;
             height: 5px;
             background-color: green;
-        }
-    /* Hidden */
-        .hidden {
-            display: none;
         }
     /* Screen */
         .sc {
@@ -79,4 +75,8 @@
     /* Clickable */
         .c:hover {
             cursor: pointer;
+        }
+    /* Hidden */
+        .hidden {
+            display: none;
         }

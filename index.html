@@ -2,7 +2,7 @@
 <html>
 <head>
 <!-- Head -->
-    <title>Pokemon RPG (4.6.18, 2:47)</title>
+    <title>Pokemon RPG (4.7.18) (12:53 PM)</title>
     <script type="text/javascript" src="game.js"></script>
     <link href="game.css" rel="stylesheet">
     <link rel="shortcut icon" href="favicon.ico">
@@ -45,6 +45,7 @@
             <button onclick="sc_sw('sc_2')">No</button><br>
         </div>
     </div>
+<!-- Main Hub -->
     <div id="sc_4" class="sc">
 <!-- Pokemon -->
         <div class="oui">
@@ -92,8 +93,8 @@
                         <button onclick="sc_sw('sc_5')">Battle</button><br>
                         <button onclick="tog_vis('riv_team')">Team</button>
                         <div id="riv_team" class="hidden oui">
-                            Bulbasaur<br>
-                            <img src="pk/bulbasaur.gif"><br>
+                            Eevee<br>
+                            <img src="pk/eevee.gif"><br>
                             Lvl. 5
                         </div>
                     </div>
@@ -127,16 +128,16 @@
             </div>
         </div>
 <!-- Notifications -->
-        <div id="con_ntf" class="hidden oui">
-            <div id="ntf"></div>
-            <div id="con_itm_ntf" class="hidden" style="width: 200px">
-                <img src="" id="img_ntf"><br>
-                <button id="btn_clm" onclick="clm()">Claim (<span id="ntf_time"></span>)</button>
-            </div>
+    <div id="con_ntf" class="hidden oui">
+        <div id="ntf"></div>
+        <div id="con_itm_ntf" class="hidden" style="width: 200px">
+            <img src="" id="img_ntf"><br>
+            <button id="btn_clm" onclick="clm()">Claim (<span id="ntf_time"></span>)</button>
         </div>
-        <div id="con_ntf2" class="hidden oui" style="width: 200px;">
-            <div id="ntf2"></div>
-        </div>
+    </div>
+    <div id="con_ntf2" class="hidden oui" style="width: 200px;">
+        <div id="ntf2"></div>
+    </div>
 <!-- Incubator -->
         <div class="oui" id="con_inc">
             Incubator<br>
@@ -148,9 +149,61 @@
             <button onclick="inc_ftc()" id="btn_ftc">Retrieve</button>
         </div>
     </div>
-<!-- Rival Fight -->
+<!-- Battle -->
     <div id="sc_5" class="sc">
-        <button onclick="sc_sw('sc_4')">fk go bak</button>
+        <div class="oui" style="display: inline-block;">
+            Bulbasaur<br>
+            <div class="ui">
+                <img src="pk/bulbasaur.gif">
+            </div><br>
+            <div id="prg_pk" class="prg">
+                <div id="bar_pk" class="bar" style="width: 100%">
+                </div>
+            </div>
+        </div>
+        <div class="oui" style="display: inline-block;">
+            Eevee<br>
+            <div class="ui">
+                <img src="pk/eevee.gif">
+            </div><br>
+            <div id="prg_epk" class="prg">
+                <div id="bar_epk" class="bar" style="width: 100%">
+                </div>
+            </div>
+        </div><br>
+        <div class="oui" id="pk_act">
+            What will Bulbasaur do?<br>
+            <div class="ui" style="padding: 5px;">
+                <button onclick="tog_invis('pk_act'); tog_vis('pk_atk')">Attack</button><button onclick="tog_invis('pk_act'); tog_vis('pk_bag')">Bag</button><br>
+                <button onclick="tog_invis('pk_act'); tog_vis('pk_sw')">Pokemon</button><button>Run</button>
+            </div>
+        </div>
+        <div id="pk_atk" class="hidden oui">
+            Attacks<br>
+            <div class="ui" style="padding: 5px;">
+                <button>---</button><br>
+                <button>---</button><br>
+                <button>---</button><br>
+                <button>---</button>
+            </div><br>
+            <button onclick="tog_invis('pk_act'); tog_vis('pk_atk')"><< Back</button>
+        </div>
+        <div id="pk_bag" class="hidden oui">
+            Bag<br>
+            <div class="ui" style="padding: 5px;">
+                <img src="item/pokeball.png">
+                <img src="item/greatball.png">
+            </div><br>
+            <button onclick="tog_invis('pk_act'); tog_vis('pk_bag')"><< Back</button>
+        </div>
+        <div id="pk_sw" class="hidden oui">
+            Pokemon<br>
+            <div class="ui" style="padding: 5px;">
+                <img src="ico/bulbasaur.png"> Bulbasaur
+            </div><br>
+            <button onclick="tog_invis('pk_act'); tog_vis('pk_sw')"><< Back</button>
+        </div>
     </div>
+
 </body>
 </html>
