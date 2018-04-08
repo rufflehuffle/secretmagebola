@@ -9,6 +9,7 @@
     var epl_time = 0; // Time left until you can explore again
     var rn = 0; //Random Number
     var itmnm = 0;
+    var head_act = 0;
 //Cookies
     //Variables
         var st = 0; //Starter
@@ -19,7 +20,7 @@
 
     //Arrays
         //Stats
-            var stat = [ 
+            var stat = [
                 0, //HP  (stat[0])
                 0, //ATK (stat[1])
                 0, //DEF (stat[2])
@@ -28,7 +29,7 @@
                 0  //SPE (stat[5])
             ];
         //Inventory
-            var inv = [ 
+            var inv = [
                 0, //Pokeballs
                 0  //Greatballs
             ];
@@ -69,20 +70,20 @@
         ];
     //Stat Gains for Training Bags
         const stat_gain = [
-            "2 HP", 
-            "1 ATK", 
-            "1 DEF", 
-            "1 SPA", 
-            "1 SPD", 
+            "2 HP",
+            "1 ATK",
+            "1 DEF",
+            "1 SPA",
+            "1 SPD",
             "1 SPE"
         ];
     //Training Bag Names
         const bag = [
-            "Azurill", 
-            "Machop", 
-            "Aron", 
-            "Litwick", 
-            "Flabebe", 
+            "Azurill",
+            "Machop",
+            "Aron",
+            "Litwick",
+            "Flabebe",
             "Zubat"
         ];
 
@@ -95,11 +96,11 @@
     const u_cl = function(cl,id){
         return document.getElementsByClassName(cl)[id];
     };
-//Toggle Visibility (Starts off invisible)
+//Toggle Visibility (For elements that start off invisible)
     function tog_vis(id){
         u_id(id).style.display = u_id(id).style.display==='block' ? 'none' : 'block';
     }
-//Toggle Visiblity (Starts off visible)
+//Toggle Visiblity (For elements that start off visible)
     function tog_invis(id){
         u_id(id).style.display = u_id(id).style.display==='none' ? 'block' : 'none';
     }
@@ -266,7 +267,11 @@
         ntf_time = 10;
         u_id("ntf_time").innerHTML=ntf_time;
         u_id("con_itm_ntf").style.display="inline-block";
+        tog_ab();
+        tog_vis("epl_r1");
+        u_ah('Actions');
     }
+
 
 //Claim Item
     function clm(){
@@ -312,6 +317,9 @@
                 tog_vis("con_ntf2");
                 u_id("ntf2").innerHTML = pk_nm + " gained " + stat_gain[x] + " from breaking open a " + bag[x] + " bag.";
                 ntf2_time = 5;
+                tog_ab();
+                tog_vis("trn_wait");
+                u_ah('Actions');
             }, 5000)
             trn_time = 5;
         }
@@ -324,4 +332,17 @@
         for (i = 0; i < a.length; i++){
             u_id(a[i]).innerHTML=stat[i];
         }
+    }
+
+//Update Actions Heading
+    function u_ah(x){
+        var head_act = x;
+        u_id("head_act").innerHTML=head_act;
+    }
+
+//Toggle Visibility of Action Buttons
+    function tog_ab(){
+        tog_invis('btn_epl');
+        tog_invis('btn_fig');
+        tog_invis('btn_trn');
     }

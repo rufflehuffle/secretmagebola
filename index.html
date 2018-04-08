@@ -2,7 +2,7 @@
 <html>
 <head>
 <!-- Head -->
-    <title>Pokemon RPG (4.7.18) (12:53 PM)</title>
+    <title>Pokemon RPG (4.7.18) (6:35 PM)</title>
     <script type="text/javascript" src="game.js"></script>
     <link href="game.css" rel="stylesheet">
     <link rel="shortcut icon" href="favicon.ico">
@@ -81,48 +81,54 @@
         </div>
 <!-- Actions -->
         <div class="hidden oui" id="con_act">
-            Actions<br>
-<!-- Fight -->
+            <span id="head_act">Actions</span><br>
             <div class="ui" style="padding: 5px;">
-                <button onclick="tog_vis('fgt')">Fight</button><br>
-                <div class="hidden ui" style="padding:5px;" id="fgt">
-                    <button onclick="tog_vis('inf_riv')">Rival</button>
-                    <div id="inf_riv" class="hidden oui">
-                        Gary<br>
-                        <img src="trainer/gary.png"><br>
-                        <button onclick="sc_sw('sc_5')">Battle</button><br>
-                        <button onclick="tog_vis('riv_team')">Team</button>
-                        <div id="riv_team" class="hidden oui">
-                            Eevee<br>
-                            <img src="pk/eevee.gif"><br>
-                            Lvl. 5
-                        </div>
-                    </div>
+<!-- Fight -->
+                <span id="btn_fig"><button onclick="tog_ab(); tog_vis('fig_sel'); u_ah('Fight');">Fight</button><br></span>
+                <div class="hidden" id="fig_sel">
+                    <button onclick="tog_vis('inf_riv'); tog_vis('fig_sel'); u_ah('Rival');">Rival</button><br>
+                    <button onclick="tog_invis('btn_epl'); tog_invis('btn_trn'); tog_invis('btn_fig'); tog_vis('fig_sel'); u_ah('Actions');"><< Back</button>
+                </div>
+                <div class="hidden" id="inf_riv">
+                    Gary<br>
+                    <img src="trainer/gary.png"><br>
+                    <button onclick="sc_sw('sc_5')">Battle</button><br>
+                    <button onclick="tog_vis('riv_team'); tog_vis('inf_riv'); u_ah('Team');">Team</button><br>
+                    <button onclick="tog_vis('inf_riv'); tog_vis('fig_sel'); u_ah('Fight');"><< Back</button>
+                </div>
+                <div class="hidden" id="riv_team">
+                    Eevee<br>
+                    <img src="pk/eevee.gif"><br>
+                    Lvl. 5<br>
+                    <button onclick="tog_vis('riv_team'); tog_vis('inf_riv'); u_ah('Rival')"><< Back</button>
                 </div>
 <!-- Explore -->
-                <button onclick="tog_vis('epl')">Explore</button><br>
-                <div class="hidden ui" style="padding:5px;" id="epl">
-                    <div onclick="epl('r1')" style="cursor: pointer; outline: 1px solid black;">
-                        Route 1
-                        <div id="prg_r1" class="prg">
-                            <div id="bar_r1" class="bar">
-                            </div>
-                        </div>
+                <span id="btn_epl"><button onclick="tog_vis('epl_menu'); tog_ab(); u_ah('Explore');">Explore</button><br></span>
+                <div class="hidden" id="epl_menu">
+                    <button onclick="tog_vis('epl_menu'); tog_vis('epl_r1'); epl('r1'); u_ah('Route 1');">Route 1</button><br>
+                    <button onclick="tog_vis('epl_menu'); tog_invis('btn_epl'); tog_invis('btn_fig'); tog_invis('btn_trn'); u_ah('Actions');"><< Back</button>
+                </div>
+                <div class="hidden" id="epl_r1">
+                    Exploring Route 1...<br>
+                    <div id="prg_r1" class="prg">
+                        <div id="bar_r1" class="bar"></div>
                     </div>
                 </div>
 <!-- Train -->
-                <button onclick="tog_vis('trn')">Train</button>
-                <div class="hidden ui" style="padding:0px;" id="trn">
-                    <!-- Experimental onclick function -->
-                    <img src="bag/HP_S.png" onclick="trn(0)" class="c">
-                    <img src="bag/ATK_S.png" onclick="trn(1)" class="c">
-                    <img src="bag/DEF_S.png" onclick="trn(2)" class="c">
-                    <img src="bag/SPA_S.png" onclick="trn(3)" class="c">
-                    <img src="bag/SPD_S.png" onclick="trn(4)" class="c">
-                    <img src="bag/SPE_S.png" onclick="trn(5)" class="c"><br>
+                <span id="btn_trn"><button onclick="tog_vis('trn_menu'); tog_ab(); u_ah('Train')">Train</button></span>
+                <div class="hidden" id="trn_menu">
+                    <img src="bag/HP_S.png" onclick="trn(0); tog_vis('trn_menu'); tog_vis('trn_wait'); u_ah(bag[0] + ' Bag');" class="c">
+                    <img src="bag/ATK_S.png" onclick="trn(1); tog_vis('trn_menu'); tog_vis('trn_wait'); u_ah(bag[1] + ' Bag');" class="c">
+                    <img src="bag/DEF_S.png" onclick="trn(2); tog_vis('trn_menu'); tog_vis('trn_wait'); u_ah(bag[2] + ' Bag');" class="c">
+                    <img src="bag/SPA_S.png" onclick="trn(3); tog_vis('trn_menu'); tog_vis('trn_wait'); u_ah(bag[3] + ' Bag');" class="c">
+                    <img src="bag/SPD_S.png" onclick="trn(4); tog_vis('trn_menu'); tog_vis('trn_wait'); u_ah(bag[4] + ' Bag');" class="c">
+                    <img src="bag/SPE_S.png" onclick="trn(5); tog_vis('trn_menu'); tog_vis('trn_wait'); u_ah(bag[5] + ' Bag');" class="c"><br>
+                    <button onclick="tog_vis('trn_menu'); tog_ab(); u_ah('Actions')"><< Back</button>
+                </div>
+                <div class="hidden" id="trn_wait">
+                    Training...<br>
                     <div id="prg_trn" class="prg">
-                        <div id="bar_trn" class="bar">
-                        </div>
+                        <div id="bar_trn" class="bar"></div>
                     </div>
                 </div>
             </div>
