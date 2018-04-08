@@ -2,17 +2,18 @@
     /* Button */
         button {
             width: 100px;
-            background-color: black;
+            background: linear-gradient(to top, black, rgb(88,88,88));
             color: white;
-            border: 1px solid gray;
+            border: 1px solid rgb(88,88,88);
             border-radius: 5px;
             outline: none;
             transition-duration: 0.3s;
+            margin: 1px;
         }
         button:hover {
             cursor: pointer;
             color: black;
-            background-color: white;
+            background: linear-gradient(rgb(211,211,211), white);
         }
     /* For Centering Other Elements */
         html, body {
@@ -37,7 +38,7 @@
         .bar {
             width: 0%;
             height: 5px;
-            background-color: green;
+            background: linear-gradient(rgb(0, 204, 0), rgb(0, 51, 0));
         }
     /* Screen */
         .sc {
@@ -47,17 +48,21 @@
         }
     /* Outer User Input */
         .oui {
-            outline: 1px solid black;
+            border: 1px solid black;
+            border-radius: 5px;
             padding: 10px;
             margin: 5px;
             background-color: white;
         }
     /* User Input */
         .ui {
-            outline: 1px solid black;
+            border: 1px solid black;
+            border-radius: 5px;
             display: inline-block;
             padding: 20px;
             margin: 5px;
+            background: linear-gradient(black, rgb(88,88,88));
+            color: white;
         }
     /* Clickable */
         .c:hover {
@@ -88,9 +93,9 @@
             height: 64px;
             width: 64px;
             padding: 0px;
-            background-size: contain;
             margin: auto;
-            background-image: url("incubator.png");
+            background: url("incubator.png"), linear-gradient(black, rgb(88,88,88));
+            background-size: contain;
         }
     /* Retrieve Button */
         #btn_ftc {

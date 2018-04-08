@@ -2,7 +2,7 @@
 <html>
 <head>
 <!-- Head -->
-    <title>Pokemon RPG (4.7.18) (11:09 PM)</title>
+    <title>Pokemon RPG (4.8.18) (1:33 AM)</title>
     <script type="text/javascript" src="game.js"></script>
     <link href="game.css" rel="stylesheet">
     <link rel="shortcut icon" href="favicon.ico">
@@ -73,7 +73,7 @@
             <div id="ui">
 <!-- Bag -->
             <button onclick="tog_vis('bag')">Bag</button>
-                <div id="bag" class="hidden oui">
+                <div id="bag" class="hidden ui">
                     <img src="item/pokeball.png"> x<span id="itm_1">0</span><br>
                     <img src="item/greatball.png"> x<span id="itm_2">0</span>
                 </div>
@@ -90,14 +90,18 @@
                     <button onclick="tog_invis('btn_epl'); tog_invis('btn_trn'); tog_invis('btn_fig'); tog_vis('fig_sel'); u_ah('Actions');"><< Back</button>
                 </div>
                 <div class="hidden" id="inf_riv">
-                    <img src="trainer/gary.png"><br>
-                    <button onclick="sc_sw('sc_5')">Battle</button><br>
+                    <div class="ui">
+                        <img src="trainer/blue.png">
+                    </div><br>
+                    <button onclick="sc_sw('sc_6')">Battle</button><br>
                     <button onclick="tog_vis('riv_team'); tog_vis('inf_riv'); u_ah('Team');">Team</button><br>
                     <button onclick="tog_vis('inf_riv'); tog_vis('fig_sel'); u_ah('Fight');"><< Back</button>
                 </div>
                 <div class="hidden" id="riv_team">
                     Eevee<br>
-                    <img src="pk/eevee.gif"><br>
+                    <div class="ui">
+                        <img src="pk/eevee.gif">
+                    </div><br>
                     Lvl. 5<br>
                     <button onclick="tog_vis('riv_team'); tog_vis('inf_riv'); u_ah('Rival')"><< Back</button>
                 </div>
@@ -109,24 +113,26 @@
                 </div>
                 <div class="hidden" id="epl_r1">
                     Exploring Route 1...<br>
-                    <div id="prg_r1" class="prg">
+                    <div id="prg_r1" class="prg" style="margin-top: 5px;">
                         <div id="bar_r1" class="bar"></div>
                     </div>
                 </div>
 <!-- Train -->
                 <span id="btn_trn"><button onclick="tog_vis('trn_menu'); tog_ab(); u_ah('Train')">Train</button></span>
                 <div class="hidden" id="trn_menu">
-                    <img src="bag/HP_S.png" onclick="trn(0); tog_vis('trn_menu'); tog_vis('trn_wait'); tog_invis('head_act_br');" class="c">
-                    <img src="bag/ATK_S.png" onclick="trn(1); tog_vis('trn_menu'); tog_vis('trn_wait'); tog_invis('head_act_br');" class="c">
-                    <img src="bag/DEF_S.png" onclick="trn(2); tog_vis('trn_menu'); tog_vis('trn_wait'); tog_invis('head_act_br');" class="c">
-                    <img src="bag/SPA_S.png" onclick="trn(3); tog_vis('trn_menu'); tog_vis('trn_wait'); tog_invis('head_act_br');" class="c">
-                    <img src="bag/SPD_S.png" onclick="trn(4); tog_vis('trn_menu'); tog_vis('trn_wait'); tog_invis('head_act_br');" class="c">
-                    <img src="bag/SPE_S.png" onclick="trn(5); tog_vis('trn_menu'); tog_vis('trn_wait'); tog_invis('head_act_br');" class="c"><br>
+                    <div class="ui" style="padding: 5px;">
+                        <img src="bag/HP_S.png" onclick="trn(0); tog_vis('trn_menu'); tog_vis('trn_wait'); tog_invis('head_act_br');" class="c">
+                        <img src="bag/ATK_S.png" onclick="trn(1); tog_vis('trn_menu'); tog_vis('trn_wait'); tog_invis('head_act_br');" class="c">
+                        <img src="bag/DEF_S.png" onclick="trn(2); tog_vis('trn_menu'); tog_vis('trn_wait'); tog_invis('head_act_br');" class="c">
+                        <img src="bag/SPA_S.png" onclick="trn(3); tog_vis('trn_menu'); tog_vis('trn_wait'); tog_invis('head_act_br');" class="c">
+                        <img src="bag/SPD_S.png" onclick="trn(4); tog_vis('trn_menu'); tog_vis('trn_wait'); tog_invis('head_act_br');" class="c">
+                        <img src="bag/SPE_S.png" onclick="trn(5); tog_vis('trn_menu'); tog_vis('trn_wait'); tog_invis('head_act_br');" class="c">
+                    </div><br>
                     <button onclick="tog_vis('trn_menu'); tog_ab(); u_ah('Actions')"><< Back</button>
                 </div>
                 <div class="hidden" id="trn_wait">
                     Training...<br>
-                    <div id="prg_trn" class="prg">
+                    <div id="prg_trn" class="prg" style="margin-top: 5px;">
                         <div id="bar_trn" class="bar"></div>
                     </div>
                 </div>
@@ -176,13 +182,15 @@
                 </div>
             </div>
         </div><br>
+<!-- Actions -->
         <div class="oui" id="pk_act">
             What will Bulbasaur do?<br>
             <div>
                 <button onclick="tog_invis('pk_act'); tog_vis('pk_atk')" id="btn_atk" class="btl_ui">Attack</button><button onclick="tog_invis('pk_act'); tog_vis('pk_bag')" id="btn_bag" class="btl_ui">Bag</button><br>
-                <button onclick="tog_invis('pk_act'); tog_vis('pk_sw')" id="btn_pk" class="btl_ui">Pokemon</button><button id="btn_run" class="btl_ui">Run</button>
+                <button onclick="tog_invis('pk_act'); tog_vis('pk_sw')" id="btn_pk" class="btl_ui">Pokemon</button><button id="btn_run" class="btl_ui" onclick="sc_sw('sc_4')">Run</button>
             </div>
         </div>
+<!-- Attack -->
         <div id="pk_atk" class="hidden oui">
             Attacks<br>
             <div>
@@ -193,6 +201,7 @@
             </div><br>
             <button onclick="tog_invis('pk_act'); tog_vis('pk_atk')"><< Back</button>
         </div>
+<!-- Bag -->
         <div id="pk_bag" class="hidden oui">
             Bag<br>
             <div class="ui" style="padding: 5px;">
@@ -201,6 +210,7 @@
             </div><br>
             <button onclick="tog_invis('pk_act'); tog_vis('pk_bag')"><< Back</button>
         </div>
+<!-- Pokemon -->
         <div id="pk_sw" class="hidden oui">
             Pokemon<br>
             <div class="ui" style="padding: 5px;">
@@ -209,6 +219,19 @@
             <button onclick="tog_invis('pk_act'); tog_vis('pk_sw')"><< Back</button>
         </div>
     </div>
-
+<!-- Rival 0 -->
+    <div id="sc_6" class="sc">
+        <div class="oui">
+            Rival<br>
+            <div class="ui">
+                <img src="trainer/blue.png">
+            </div>
+        </div>
+        <br>
+        <div class="oui">
+            Let's check out our Pokemon! Come on, I'll take you on!<br>
+            <button onclick="sc_sw('sc_5')">Next >></button>
+        </div>
+    </div>
 </body>
 </html>

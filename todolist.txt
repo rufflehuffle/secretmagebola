@@ -1,6 +1,6 @@
 [S] Priority:
     -None
-    
+
 [A] Priority:
     -Create Battle System (in progress)
     -Create Saving System
@@ -9,8 +9,6 @@
     -Add to Explore System
         -Balance Route 1
         -Add more areas & unlocking areas
-    -Make Actions Menu look nicer
-        -Have other elements disappear when choosing one option (fight, train, explore)
 
 [C] Priority:
     -Add Store & Currency
