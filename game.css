@@ -2,9 +2,17 @@
     /* Button */
         button {
             width: 100px;
+            background-color: black;
+            color: white;
+            border: 1px solid gray;
+            border-radius: 5px;
+            outline: none;
+            transition-duration: 0.3s;
         }
         button:hover {
             cursor: pointer;
+            color: black;
+            background-color: white;
         }
     /* For Centering Other Elements */
         html, body {
@@ -17,34 +25,13 @@
             background-size: fill;
         }
 
-/* IDs */
-    /* Screen 1*/
-        #sc_1 {
-            display: block;
-        }
-    /* Incubator */
-        #inc {
-            display: grid;
-            height: 64px;
-            width: 64px;
-            padding: 0px;
-            background-size: contain;
-            margin: auto;
-            background-image: url("incubator.png");
-        }
-    /* Retrieve Button */
-        #btn_ftc {
-            display: none;
-            width: 100px;
-        }
-
-
 /* Classes */
     /* Progress Bar*/
         .prg {
             height: 5px;
             background-color: lightgray;
             width: 100%;
+            outline: 1px solid black;
         }
     /* Progress Bar Filling */
         .bar {
@@ -79,4 +66,54 @@
     /* Hidden */
         .hidden {
             display: none;
+        }
+    /* Battle UI */
+        .btl_ui {
+            color: white;
+            border: 1px solid black;
+        }
+        .btl_ui:hover {
+            color: white;
+            border: 1px solid rgb(153, 0, 0);
+        }
+
+/* IDs */
+    /* Screen 1*/
+        #sc_1 {
+            display: block;
+        }
+    /* Incubator */
+        #inc {
+            display: grid;
+            height: 64px;
+            width: 64px;
+            padding: 0px;
+            background-size: contain;
+            margin: auto;
+            background-image: url("incubator.png");
+        }
+    /* Retrieve Button */
+        #btn_ftc {
+            display: none;
+            width: 100px;
+        }
+    /* Attack Button */
+        #btn_atk {
+            background: linear-gradient(rgb(255, 0, 0), rgb(128, 0, 0));
+            background-color: ;
+        }
+    /* Bag Button */
+        #btn_bag {
+            background: linear-gradient(rgb(255, 204, 0), rgb(204, 102, 0));;
+            background-color: ;
+        }
+    /* Pokemon Button */
+        #btn_pk {
+            background: linear-gradient(rgb(0, 204, 0), rgb(0, 51, 0));
+            background-color: ;
+        }
+    /* Run Button */
+        #btn_run {
+            background: linear-gradient(rgb(0, 102, 255), rgb(0, 0, 153));
+            background-color: ;
         }

@@ -270,6 +270,7 @@
         tog_ab();
         tog_vis("epl_r1");
         u_ah('Actions');
+        tog_invis('head_act_br');
     }
 
 
@@ -320,6 +321,7 @@
                 tog_ab();
                 tog_vis("trn_wait");
                 u_ah('Actions');
+                tog_invis('head_act_br');
             }, 5000)
             trn_time = 5;
         }
