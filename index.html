@@ -2,20 +2,20 @@
 <html>
 <head>
 <!-- Head -->
-    <title>Pokemon RPG (4.8.18) (1:33 AM)</title>
+    <title>Pokemon RPG (4.8.18) (7:09 PM)</title>
     <script type="text/javascript" src="game.js"></script>
     <link href="game.css" rel="stylesheet">
     <link rel="shortcut icon" href="favicon.ico">
 </head>
 
-<body>
+<body onload="console.log(document.cookie.split(';'))">
 <!-- Music -->
     <audio src="" autoplay loop id="audioloop"></audio>
 <!-- Start -->
     <div id="sc_1" class="sc">
         <div class="oui">
             Pokemon RPG<br>
-            <button onclick="sc_sw('sc_2')">Start</button>
+            <button onclick="btn_start()">Start</button>
         </div>
     </div>
 <!-- Introduction -->
@@ -49,9 +49,9 @@
     <div id="sc_4" class="sc">
 <!-- Pokemon -->
         <div class="oui">
-            <span id="pk_nm">???</span><br>
+            <span class="pk_nm">???</span><br>
             <div class="ui">
-                <img id="pk_img">
+                <img class="pk_img">
             </div><br>
             <button id="btn_inc" style="width:100px" onclick="inc_plc()">Incubate</button>
             <div id="con_stg1" class="hidden">
@@ -136,6 +136,7 @@
                         <div id="bar_trn" class="bar"></div>
                     </div>
                 </div>
+                <button onclick="csv()">Save</button>
             </div>
         </div>
 <!-- Notifications -->
@@ -163,9 +164,9 @@
 <!-- Battle -->
     <div id="sc_5" class="sc">
         <div class="oui" style="display: inline-block;">
-            Bulbasaur<br>
+            <span class="pk_nm">Bulbasaur</span><br>
             <div class="ui">
-                <img src="pk/bulbasaur.gif">
+                <img src="pk/bulbasaur.gif" class="pk_img">
             </div><br>
             <div id="prg_pk" class="prg">
                 <div id="bar_pk" class="bar" style="width: 100%">
@@ -184,7 +185,7 @@
         </div><br>
 <!-- Actions -->
         <div class="oui" id="pk_act">
-            What will Bulbasaur do?<br>
+            What will <span class="pk_nm">Bulbasaur</span> do?<br>
             <div>
                 <button onclick="tog_invis('pk_act'); tog_vis('pk_atk')" id="btn_atk" class="btl_ui">Attack</button><button onclick="tog_invis('pk_act'); tog_vis('pk_bag')" id="btn_bag" class="btl_ui">Bag</button><br>
                 <button onclick="tog_invis('pk_act'); tog_vis('pk_sw')" id="btn_pk" class="btl_ui">Pokemon</button><button id="btn_run" class="btl_ui" onclick="sc_sw('sc_4')">Run</button>
@@ -203,18 +204,24 @@
         </div>
 <!-- Bag -->
         <div id="pk_bag" class="hidden oui">
-            Bag<br>
-            <div class="ui" style="padding: 5px;">
-                <img src="item/pokeball.png">
-                <img src="item/greatball.png">
+            <span id="bag_h">Bag</span><br>
+            <div class="ui" style="padding: 5px;" id="bag_menu">
+                <img src="item/pokeball.png" onclick="" class="c">
+                <img src="item/greatball.png" onclick="" class="c">
             </div><br>
             <button onclick="tog_invis('pk_act'); tog_vis('pk_bag')"><< Back</button>
+            <div id="bag_inf" class="hidden">
+                <div class="ui">
+                    <img id="itm_img">
+                </div>
+                <div class="ui" id="itm_inf"></div>
+            </div>
         </div>
 <!-- Pokemon -->
         <div id="pk_sw" class="hidden oui">
             Pokemon<br>
             <div class="ui" style="padding: 5px;">
-                <img src="ico/bulbasaur.png"> Bulbasaur
+                <img class="pk_ico"> <span class="pk_nm">Bulbasaur</span>
             </div><br>
             <button onclick="tog_invis('pk_act'); tog_vis('pk_sw')"><< Back</button>
         </div>

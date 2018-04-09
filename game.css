@@ -4,10 +4,10 @@
             width: 100px;
             background: linear-gradient(to top, black, rgb(88,88,88));
             color: white;
-            border: 1px solid rgb(88,88,88);
+            border: 2px solid black;
             border-radius: 5px;
             outline: none;
-            transition-duration: 0.3s;
+            transition-duration: 0.5s;
             margin: 1px;
         }
         button:hover {
@@ -75,11 +75,10 @@
     /* Battle UI */
         .btl_ui {
             color: white;
-            border: 1px solid black;
         }
         .btl_ui:hover {
             color: white;
-            border: 1px solid rgb(153, 0, 0);
+            border: 2px solid rgb(153, 0, 0);
         }
 
 /* IDs */

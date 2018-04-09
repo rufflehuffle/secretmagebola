@@ -11,12 +11,25 @@
     var itmnm = 0;
     var head_act = 0;
 //Cookies
+    //Cookie Names
+        const cookie_names = [ 
+            'ck_st',
+            'ck_sc_prev',
+            'ck_pk_lvl',
+            'ck_pk_img',
+            'ck_pk_nm',
+            'ck_pk_ico',
+            'ck_stat',
+            'ck_inv'
+            ];
+
     //Variables
         var st = 0; //Starter
         var sc_prev = "sc_1"; //Previous Screen
         var pk_lvl = 0; //Pokemon Level
         var pk_img = 0; //Pokemon Image
         var pk_nm = 0; //Pokemon Name
+        var pk_ico = 0; //Pokemon Icon
 
     //Arrays
         //Stats
@@ -58,6 +71,12 @@
             "pk/charmander.gif",
             "pk/squirtle.gif"
         ];
+    //Pokemon Icons
+        const pk_icos = [
+            "ico/bulbasaur.png",
+            "ico/charmander.png",
+            "ico/squirtle.png"
+        ]
     //Items
         const itms = [
             "Poke Ball",
@@ -85,7 +104,7 @@
             "Litwick",
             "Flabebe",
             "Zubat"
-        ];
+        ];         
 
 //Shorthand for document.getElementById
     const u_id = function(id){
@@ -109,8 +128,8 @@
     function timer() {
         //Incubation
         if (pk_inc == 1) { //Check time of Incubation
-            eg_hat = eg_hat - 1;
-            inc_time = inc_time + 1;
+            eg_hat -= 1;
+            inc_time += 1;
             u_id("inc_time").innerHTML=inc_time;
             u_id("eg_hat").innerHTML=eg_hat;
         }
@@ -120,7 +139,9 @@
             pk_lvl = 1;                                    //Set pokemon level to 1
             define_pk_hat();                               //Check what pokemon hatches from the egg and set stats, name, and image of pokemon
             inc_ftc();                                     //Take pokemon out of incubator
-            u_id("pk_img").src=pk_img;                     //Update pokemon image
+            for (let i = 0; i < 2; i++){
+                u_cl("pk_img", i).src=pk_img;
+            }
             u_id("con_inc").style.display="none";          //Make incubator invisible
             u_id("btn_inc").style.display="none";          //Make incubate button invisible
             u_id("ntf").innerHTML="Your egg has hatched!"; //Notify the player that their egg has hatched
@@ -133,38 +154,42 @@
         }
 
         //Notification Timer
-        ntf_time = ntf_time - 1; //Subtract 1 from time left for notification
+        ntf_time -= 1; //Subtract 1 from time left for notification
         u_id("ntf_time").innerHTML=ntf_time;
         if (ntf_time == 0) { //Check if notification time is up
             u_id("con_ntf").style.display="none"; //Make notification box invisible
         }
         if (ntf2_time > 0){
-            ntf2_time = ntf2_time - 1;
+            ntf2_time -= 1;
         } else {
             u_id("con_ntf2").style.display="none";
         }
 
         //Explore Timer
         if (epl_time > 0) {
-            epl_time = epl_time - 1;
+            epl_time -= 1;
         }
 
         //Training Timer
         if (trn_time > 0) {
-            trn_time = trn_time - 1;
+            trn_time -= 1;
         }
     }
 
 //Find out what pokemon hatches from the egg
     function define_pk_hat(){
-        for (i = 0; i < 3; i++){
+        for (let i = 0; i < 3; i++){
             if (st == i){
                 pk_img = pk_imgs[i+3];
                 pk_nm = pk_nms[i];
+                pk_ico = pk_icos[i];
             }
         }
         set_stat(12, 6, 6, 6, 6, 6, 0); //Set stats
-        u_id("pk_nm").innerHTML=pk_nm; //Update pokemon name in html
+        for (let i = 0; i < 4; i++){
+            u_cl("pk_nm", i).innerHTML=pk_nm;
+        }
+        u_cl("pk_ico", 0).src=pk_ico;
     }
 
 //Select Starter
@@ -176,13 +201,15 @@
 
 //Define Starter Egg
     function def_st_eg(x){
-        for (i = 0; i < 3; i++){
+        for (let i = 0; i < pk_imgs.length; i++){
             if (x == i){
                 pk_img = pk_imgs[i];
             }
         }
         u_cl("st_eg", 0).src=pk_img;
-        u_id("pk_img").src=pk_img;
+        for (let i = 0; i < 2; i++){
+            u_cl("pk_img", i).src=pk_img;
+        }
         eg_hat = 1;
     }
 
@@ -195,7 +222,7 @@
 
 //Place in Incubator
     function inc_plc(){
-        u_id("pk_img").style.display="none";
+        u_cl("pk_img", 0).style.display="none";
         u_id("inc_img").src=pk_img;
         pk_inc = 1;
         u_id("btn_ftc").style.display="block";
@@ -204,7 +231,7 @@
 
 //Retrieve from Incubator
     function inc_ftc(){
-        u_id("pk_img").style.display="block";
+        u_cl("pk_img", 0).style.display="block";
         u_id("inc_img").src="";
         pk_inc = 0;
         inc_time = 0;
@@ -222,7 +249,7 @@
 //Setting Pokemon Stats
     function set_stat(a,b,c,d,e,f,x){
     let y = [a, b, c, d, e, f];
-    for (i = 0; i < 6; i++){
+    for (let i = 0; i < 6; i++){
         if (x == 0){
             stat[i] = y[i];
         }
@@ -255,7 +282,7 @@
 
 //Find Item
     function fnd(x){
-        for (i = 0; i < itms.length; i++){
+        for (let i = 0; i < itms.length; i++){
             itmnm = itms[x];
             var img = itm_imgs[x];
         }
@@ -276,9 +303,9 @@
 
 //Claim Item
     function clm(){
-        for (i = 0; i < itms.length; i++){
+        for (let i = 0; i < itms.length; i++){
             if (fnd_itmid == i){
-                inv[i] = inv[i] + 1;
+                inv[i] += 1;
             }
         }
         u_id("ntf").innerHTML=itmnm + " sent to bag.";
@@ -310,9 +337,9 @@
             prg("bar_trn", 0.2);
             setTimeout(function(){
                 if (x == 0){
-                    stat[x] = stat[x] + 2;
+                    stat[x] += 2;
                 } else {
-                stat[x] =  stat[x] + 1;
+                stat[x] += 1;
                 }
                 u_stat();
                 tog_vis("con_ntf2");
@@ -330,8 +357,7 @@
 //Update Stats
     function u_stat(){
         var a = ["hp", "atk", "def", "spa", "spd", "spe"]
-        var i;
-        for (i = 0; i < a.length; i++){
+        for (let i = 0; i < a.length; i++){
             u_id(a[i]).innerHTML=stat[i];
         }
     }
@@ -347,4 +373,47 @@
         tog_invis('btn_epl');
         tog_invis('btn_fig');
         tog_invis('btn_trn');
+    }
+
+//Set Cookie
+    function cset(cname, cvalue){
+        document.cookie = cname + "=" + cvalue + ";"
+    }
+
+//Get Cookie
+    function cget(cname) {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for (let i = 0; i <ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+//Save
+    function csv(){
+        let cookie_values = [
+            st,
+            sc_prev,
+            pk_lvl,
+            pk_img,
+            pk_nm,
+            pk_ico,
+            stat,
+            inv
+        ];
+        for (let i = 0; i < cookie_names.length; i++){
+            cset(cookie_names[i], cookie_values[i]);
+        }
+        console.log(document.cookie);
+    }
+
+//Start Game
+    function btn_start(){
+            sc_sw('sc_2')
     }

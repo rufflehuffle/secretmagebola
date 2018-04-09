@@ -3,7 +3,7 @@
 
 [A] Priority:
     -Create Battle System (in progress)
-    -Create Saving System
+    -Create Saving System (in progress)
 
 [B] Priority:
     -Add to Explore System
